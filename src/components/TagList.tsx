@@ -1,37 +1,62 @@
 import { useState } from "react";
 import "./taglist.css";
 
-interface Tag {
+interface TagType {
   name: string;
   description: string;
 }
 
-const tags: Tag[] = [
-  {
-    name: "div",
-    description: "Element blokowy służący do grupowania innych elementów HTML.",
-  },
-  {
-    name: "span",
-    description:
-      "Element liniowy służący do wstawiania fragmentów tekstu lub innych elementów HTML wewnątrz bloku.",
-  },
-  { name: "a", description: "Element służący do tworzenia hiperłączy." },
-  { name: "img", description: "Element służący do wstawiania obrazów." },
-];
+// tutaj definiujemy jakie parametry przyjmuje TagsList
+interface TagListPropsType {
+  tytu: string;
+  numb: number;
+  title: string;
+  czyPokazacZdjecie: boolean;
+  // ten znak zapytania znaczy, ze ta property jest nieobowiązkowa
+  tags?: TagType[];
+  // tytulH2: string
+  // można przekazać number, boolean, string,
+  // czyPokazacZdjecie: boolean
+}
 
-const TagList = () => {
+// const TagList = ({pies, mojeImie, wiek}) => {
+// const TagList = (props: TagListPropsType) => {
+// props = {
+//   id: '123',
+//   name: 'jfjdj'
+// }
+// const {id, name} = props;
+
+const TagList = ({tytu, numb, title, czyPokazacZdjecie, tags}: TagListPropsType) => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   const handleTagClick = (index: number) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
+  // props = {
+  //   tytul = 'to co mu podamy'
+  //     tags = []
+  // }
+
+  // console.log("Nasze props z góry:", props);
+
+  const naszeWewnetrzneTagi = tags || [];
+  const naszeWewnetrzneTagi35 = tags || [];
+  const naszeWewnetrzneTagirozne = tags || [];
+
   return (
     <div className="tag-list">
-      <h1 className="title">Lista tagów HTML</h1>
+      <h1 className="title">{title}</h1>
+      <p>Hello {tytu}</p>
+      <h2>{numb}</h2>
+      <p>{czyPokazacZdjecie}</p>
+
+      {/* <h2 className="title">{props.tytulH2}</h2> */}
+      {/* <span>{props.text}</span> */}
+
       <ul>
-        {tags.map((tag, index) => (
+        {naszeWewnetrzneTagi.map((tag, index) => (
           <li key={tag.name} className="tag">
             <div className="tag-header" onClick={() => handleTagClick(index)}>
               <h2>{tag.name}</h2>
