@@ -2,6 +2,8 @@ import "./App.css"
 import TagList from './components/TagList';
 import {Licznik} from './components/LicznikTest';
 import {Weather} from './components/Weather';
+import { LicznikTestowy } from "./components/LicznikTestowy";
+
 
 
 
@@ -66,7 +68,7 @@ const App = () => (
   <TagList tytu={naszeTagi[0].description} numb={123} title={paragraf} czyPokazacZdjecie={true}/>
   {/* <Licznik tytul={"Paragraf"}/> */}
   <Weather />
-  
+  <LicznikTestowy name={"To jest testowy licznik z użyciem useState"}/>
   {/* <TagList tytul={paragraf} />} */}
   </>
 
